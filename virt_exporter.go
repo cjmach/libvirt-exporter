@@ -406,7 +406,6 @@ func (e *Exporter) Collect(ch chan<- prometheus.Metric) {
 		}
 
 		xmlDesc, err := domain.GetXMLDesc(0)
-		// log.Println(xmlDesc)
 		if err != nil {
 			log.Printf("[ERROR] Failed to get XML description for domain %s: %s\n", name, err)
 		} else {
@@ -488,7 +487,7 @@ func (e *Exporter) Describe(ch chan<- *prometheus.Desc) {
 	// Disk errors
 	ch <- diskErrorInfoDesc
 	// FS info
-	// ch <- fsInfoDesc
+	ch <- fsInfoDesc
 	// Interface stats
 	ch <- ifstatsRxBytesDesc
 	ch <- ifstatsRxDropTotalDesc
